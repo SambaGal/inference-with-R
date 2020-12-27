@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Maria Freydlin" />
+
+<meta name="date" content="2020-10-21" />
+
+<title>Tooth Growth Analysis</title>
+
+<script src="toothgrowth_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="toothgrowth_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="toothgrowth_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="toothgrowth_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="toothgrowth_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="toothgrowth_files/navigation-1.1/tabsets.js"></script>
+<link href="toothgrowth_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="toothgrowth_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Tooth Growth Analysis</h1>
+<h4 class="author">Maria Freydlin</h4>
+<h4 class="date">10/21/2020</h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#in-the-following-report-i-will-explore-the-effects-of-tooth-growth-in-guinea-pigs-based-on-the-supplement-supplement-that-was-administered-and-different-dosage.">In the following report I will explore the effects of tooth growth in guinea pigs based on the supplement supplement that was administered and different dosage.</a></li>
+</ul>
+</div>
+
+<div id="in-the-following-report-i-will-explore-the-effects-of-tooth-growth-in-guinea-pigs-based-on-the-supplement-supplement-that-was-administered-and-different-dosage." class="section level3">
+<h3>In the following report I will explore the effects of tooth growth in guinea pigs based on the supplement supplement that was administered and different dosage.</h3>
+<p>Here is the overall summary of the data</p>
+<pre class="r"><code>head(ToothGrowth)</code></pre>
+<pre><code>##    len supp dose
+## 1  4.2   VC  0.5
+## 2 11.5   VC  0.5
+## 3  7.3   VC  0.5
+## 4  5.8   VC  0.5
+## 5  6.4   VC  0.5
+## 6 10.0   VC  0.5</code></pre>
+<pre class="r"><code>summary(ToothGrowth)</code></pre>
+<pre><code>##       len        supp         dose      
+##  Min.   : 4.20   OJ:30   Min.   :0.500  
+##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
+##  Median :19.25           Median :1.000  
+##  Mean   :18.81           Mean   :1.167  
+##  3rd Qu.:25.27           3rd Qu.:2.000  
+##  Max.   :33.90           Max.   :2.000</code></pre>
+<pre class="r"><code>summary(ToothGrowth$len)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    4.20   13.07   19.25   18.81   25.27   33.90</code></pre>
+<p>Here is the visual representation of how each supplement affects the tooth growth. Seems like OJ has an overall better effect although VC has many outliers and more variability.</p>
+<pre class="r"><code>library(ggplot2)
+sb &lt;- ggplot(ToothGrowth, aes(x=supp, y=len))+
+        geom_boxplot(fill=&#39;blue&#39;)+ theme_bw()
+print(sb)</code></pre>
+<p><img src="toothgrowth_files/figure-html/supp-1.png" /><!-- --></p>
+<p>Now let’s take a look at the overall effect by dosage. Here dose 2 clearly is a better performer.</p>
+<pre class="r"><code>db &lt;- ggplot(ToothGrowth,  aes(x=factor(dose), y=len))+
+        geom_boxplot(fill=&#39;magenta&#39;)+theme_bw()
+print(db)</code></pre>
+<p><img src="toothgrowth_files/figure-html/dose-1.png" /><!-- --></p>
+<p>Here is another look at the data, now I split it into supplement and dose. While dose two seems to be the better choice it’s a bit unclear which supplement is the best whith that particular dose.</p>
+<pre class="r"><code>gb &lt;-  ggplot(ToothGrowth , aes(x=supp, y=len)) +
+        geom_boxplot(aes(fill=factor(dose)), position=&#39;dodge&#39;)+
+        theme_bw()
+print(gb)</code></pre>
+<p><img src="toothgrowth_files/figure-html/sd-1.png" /><!-- --></p>
+<p>Next I will subset the data to take a look at the dose 2 subjects and explore the mean difference in both supplement groups</p>
+<pre class="r"><code>oj2 &lt;- ToothGrowth[(ToothGrowth$sup==&#39;OJ&#39;) &amp; (ToothGrowth$dose==2),]$len
+vc2 &lt;- ToothGrowth[(ToothGrowth$sup==&#39;VC&#39;) &amp; (ToothGrowth$dose==2),]$len</code></pre>
+<p>I will perform an independent two sided t test and set variance to be unequal. The null hypothesis would be both groups have the same mean and the alpha confidence level is 0.05</p>
+<pre class="r"><code>t.test(oj2, vc2, alternative = &#39;two.sided&#39;, var.equal = F)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  oj2 and vc2
+## t = -0.046136, df = 14.04, p-value = 0.9639
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.79807  3.63807
+## sample estimates:
+## mean of x mean of y 
+##     26.06     26.14</code></pre>
+<p>After performing the t test we get the p-value of 0.9639 which is very large so we fail to reject the null hypothesis of equal means and come up with the conclusion that dose two is the best performer regardless of the supplement used.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
